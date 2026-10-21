@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # LazyMate AI
 
 LazyMate AI is a productivity assistant powered by a locally
@@ -22,3 +23,6 @@ running open-weight AI model.
 3. Download the model using `ollama pull llama3.2:3b`.
 4. Run `python app.py`.
 5. Open http://127.0.0.1:5000.
+=======
+# LazyMate-AI
+>>>>>>> c01f21201f3b85a5fc924314bd33abdfd5a2493f

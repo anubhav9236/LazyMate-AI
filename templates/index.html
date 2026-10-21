@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LazyMate AI</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef2ff;
+            margin: 0;
+            padding: 30px 15px;
+            color: #1e293b;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px #0001;
+        }
+
+        h1 {
+            color: #4f46e5;
+        }
+
+        textarea, select, button {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 12px;
+            margin-top: 12px;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        textarea, select {
+            border: 1px solid #cbd5e1;
+        }
+
+        textarea {
+            min-height: 150px;
+        }
+
+        button {
+            background: #4f46e5;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .result {
+            background: #f8fafc;
+            padding: 15px;
+            border-radius: 8px;
+            white-space: pre-wrap;
+            overflow-wrap: anywhere;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>LazyMate AI 🤖</h1>
+        <p>Save time with your personal local AI assistant.</p>
+
+        <form method="POST">
+            <label>Select a task</label>
+
+            <select name="task">
+                <option value="summary">Text Summarizer</option>
+                <option value="email">Email Writer</option>
+                <option value="planner">Daily Task Planner</option>
+                <option value="study">Study Topic Explainer</option>
+            </select>
+
+            <label>Enter your text</label>
+
+            <textarea
+                name="text"
+                placeholder="Enter your text, notes, tasks or topic..."
+                required
+            ></textarea>
+
+            <button type="submit">Generate with AI</button>
+        </form>
+
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+
+        {% if result %}
+            <h2>AI Result</h2>
+            <div class="result" id="result">{{ result }}</div>
+
+            <button onclick="copyResult()" type="button">
+                Copy Result
+            </button>
+        {% endif %}
+    </div>
+
+    <script>
+        function copyResult() {
+            const result = document.getElementById("result");
+
+            if (result) {
+                navigator.clipboard.writeText(result.innerText)
+                    .then(() => alert("Copied successfully!"))
+                    .catch(() => alert("Copy failed. Please copy manually."));
+            }
+        }
+    </script>
+</body>
+</html>
